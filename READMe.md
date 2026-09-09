@@ -5,15 +5,15 @@ and AST-based conditional branching. Built as a functional core / imperative
 shell architecture: business logic lives in a framework-free `packages/engine`,
 consumed by both the NestJS API and the Next.js admin UI.
 
-**Status:** early build — engine core and local infra are done, API/DB layer in progress.
+**Status:** early build - engine core and local infra are done, API/DB layer in progress.
 
 ## Architecture
 
-- `packages/engine` — pure TypeScript, zero framework dependencies. Branching
+- `packages/engine` - pure TypeScript, zero framework dependencies. Branching
   rule evaluation, submission validation (Zod-derived from question metadata),
   and questionnaire graph validation (circular/dangling `visibleWhen` detection).
-- `apps/api` — NestJS, in progress.
-- `apps/admin-ui` — Next.js, in progress.
+- `apps/api` - NestJS, in progress.
+- `apps/admin-ui` - Next.js, in progress.
 - PostgreSQL with JSONB for question rules and submission answers.
 
 ## Getting started
@@ -32,5 +32,5 @@ docker compose up --build
 pnpm --filter @questionnaire-platform/engine test:coverage
 ```
 
-Engine package currently at 99.11% branch coverage — nested AND/OR branching,
+Engine package currently at 99.11% branch coverage - nested AND/OR branching,
 schema validation, and graph-cycle detection are all covered.
