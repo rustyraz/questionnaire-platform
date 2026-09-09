@@ -39,6 +39,7 @@ const findCycles = (questions: readonly Question[]): readonly GraphError[] => {
                 kind: 'cycle',
                 message: `Circular visibility dependency: ${[...path, key].join(' -> ')}`,
             });
+            return;
         }
         visiting.add(key);
         for (const dependency of dependsOn.get(key) ?? []) {
