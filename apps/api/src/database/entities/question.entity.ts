@@ -24,14 +24,14 @@ export class QuestionEntity {
     type!: string;
 
     @Column({ type: 'int' })
-    order!: string;
+    order!: number;
 
     @Column({ type: 'jsonb', nullable: true })
-    options!: string;
+    options!: unknown | null;
 
     @Column({ type: 'jsonb', nullable: true })
-    validation!: string;
+    validation!: unknown | null;
 
     @Column({ type: 'jsonb', nullable: true })
-    visibleWhen!: string;
+    visibleWhen!: unknown | null;
 }
