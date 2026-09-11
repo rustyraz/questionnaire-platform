@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { QuestionnaireEntity } from './questionnaires.entity.js';
+import { QuestionnaireEntity } from './questionnaire.entity.js';
 export type QuestionnaireStatus = 'draft' | 'published' | 'archived';
 
 @Entity('questions')

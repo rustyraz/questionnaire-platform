@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { QuestionnaireEntity } from './entities/questionnaires.entity.js';
+import { QuestionnaireEntity } from './entities/questionnaire.entity.js';
 import { QuestionEntity } from './entities/question.entity.js';
 import { SurveySubmissionEntity } from './entities/survey-submission.entity.js';
 

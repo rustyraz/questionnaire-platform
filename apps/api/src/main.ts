@@ -1,20 +1,14 @@
-import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
+import 'reflect-metadata';
+import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
+import { AppModule } from './app.module.js';
 
-const PORT = Number(process.env.PORT ?? 3000);
-
-const jsonResponse = (res: ServerResponse, status: number, body: unknown): void => {
-    res.writeHead(status, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(body))
+const bootstrap = async (): Promise<void> => {
+    const app = await NestFactory.create(AppModule);
+    app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true, forbidNonWhitelisted: true }));
+    const port = Number(process.env.PORT ?? 3000);
+    await app.listen(port);
+    console.log(`api listening on ${port}`);
 };
 
-const handleRequest = (req: IncomingMessage, res: ServerResponse): void => {
-    if (req.url === '/health') {
-        jsonResponse(res, 200, { status: 'ok', service: 'api' });
-        return;
-    }
-    jsonResponse(res, 200, { message: 'api placeholder - to be replaced by NestJS later' });
-};
-
-createServer(handleRequest).listen(PORT, () => {
-    console.log(`api placeholder listening on ${PORT}`);
-});
+bootstrap();
